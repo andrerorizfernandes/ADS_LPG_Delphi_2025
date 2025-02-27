@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/09/30 18:29:23.000.805,=C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/08/17 20:46:44.000.781,=C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/08/09 19:12:50.000.921,=C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/08/17 21:03:30.000.707,=C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/10/22 14:10:40.000.679,=C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2025/02/20 19:04:01.000.642,=C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2025/02/20 19:06:03.000.843,C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\andre\Downloads\20250220\Cliente.pas</Transaction>
+    <Transaction>2025/02/20 19:06:03.000.843,C:\Users\andre\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\andre\Downloads\20250220\Cliente.dfm</Transaction>
+    <Transaction>2025/02/20 19:06:41.000.773,C:\Users\andre\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\andre\Downloads\20250220\ContasPagar.dproj</Transaction>
+    <Transaction>2025/02/20 19:11:23.000.738,=C:\Users\andre\Downloads\20250220\Unit1.pas</Transaction>
+    <Transaction>2025/02/20 19:11:39.000.899,C:\Users\andre\Downloads\20250220\Unit1.pas=C:\Users\andre\Downloads\20250220\Banco.pas</Transaction>
+    <Transaction>2025/02/20 19:11:39.000.899,C:\Users\andre\Downloads\20250220\Unit1.dfm=C:\Users\andre\Downloads\20250220\Banco.dfm</Transaction>
+    <Transaction>2025/02/20 19:12:10.000.468,=C:\Users\andre\Downloads\20250220\Unit1.pas</Transaction>
+    <Transaction>2025/02/20 19:12:38.000.380,=C:\Users\andre\Downloads\20250220\Unit1.pas</Transaction>
+    <Transaction>2025/02/20 19:13:04.000.754,C:\Users\andre\Downloads\20250220\Unit1.pas=C:\Users\andre\Downloads\20250220\Utilidade.pas</Transaction>
+  </Transactions>
+</BorlandProject>
