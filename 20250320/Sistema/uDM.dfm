@@ -4,8 +4,8 @@ object DM: TDM
   object Conexao: TFDConnection
     Params.Strings = (
       
-        'Database=C:\Users\andre\Downloads\ADS_LPG_Delphi_2025\20250320\B' +
-        'anco dados\LOJA.FDB'
+        'Database=C:\Users\Andre Roriz\Downloads\ADS_LPG_Delphi_2025\2025' +
+        '0320\Banco dados\LOJA.FDB'
       'User_Name=SYSDBA'
       'Password=18071988'
       'DriverID=FB')
@@ -15,8 +15,8 @@ object DM: TDM
   end
   object phyFirebird: TFDPhysFBDriverLink
     VendorLib = 
-      'C:\Users\andre\Downloads\ADS_LPG_Delphi_2025\20250320\Banco dado' +
-      's\fbclient.dll'
+      'C:\Users\Andre Roriz\Downloads\ADS_LPG_Delphi_2025\20250320\Banc' +
+      'o dados\fbclient.dll'
     Left = 120
     Top = 24
   end
