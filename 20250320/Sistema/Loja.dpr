@@ -1,4 +1,4 @@
-program Loja;
+program Loja; 
 
 uses
   Vcl.Forms,
