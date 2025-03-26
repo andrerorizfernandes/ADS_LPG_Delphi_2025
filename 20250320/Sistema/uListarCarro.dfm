@@ -3,7 +3,7 @@ object frmListarCarro: TfrmListarCarro
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Carro'
+  Caption = 'Carros'
   ClientHeight = 444
   ClientWidth = 758
   Color = clBtnFace
@@ -20,7 +20,7 @@ object frmListarCarro: TfrmListarCarro
     Left = 0
     Top = 0
     Width = 758
-    Height = 444
+    Height = 410
     Align = alClient
     DataSource = DM.dsrCarro
     Font.Charset = DEFAULT_CHARSET
@@ -35,6 +35,7 @@ object frmListarCarro: TfrmListarCarro
     TitleFont.Height = -12
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = [fsBold]
+    OnDrawColumnCell = dbgCarroDrawColumnCell
     Columns = <
       item
         Expanded = False
@@ -70,5 +71,45 @@ object frmListarCarro: TfrmListarCarro
         Title.Caption = 'Pot'#234'ncia'
         Visible = True
       end>
+  end
+  object pnlBotoes: TPanel
+    Left = 0
+    Top = 410
+    Width = 758
+    Height = 34
+    Align = alBottom
+    TabOrder = 1
+    object btnExcluir: TBitBtn
+      Left = 656
+      Top = 1
+      Width = 101
+      Height = 32
+      Align = alRight
+      Caption = '&Excluir'
+      TabOrder = 0
+      ExplicitHeight = 34
+    end
+    object btnInserir: TBitBtn
+      Left = 454
+      Top = 1
+      Width = 101
+      Height = 32
+      Align = alRight
+      Caption = '&Inserir'
+      TabOrder = 1
+      ExplicitTop = 6
+      ExplicitHeight = 34
+    end
+    object btnEditar: TBitBtn
+      Left = 555
+      Top = 1
+      Width = 101
+      Height = 32
+      Align = alRight
+      Caption = '&Editar'
+      TabOrder = 2
+      ExplicitLeft = 656
+      ExplicitHeight = 34
+    end
   end
 end
