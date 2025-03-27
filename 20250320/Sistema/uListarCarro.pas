@@ -18,7 +18,10 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbgCarroDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnExcluirClick(Sender: TObject);
   private
+    procedure ValidaExclusaoCarro;
+    procedure ExcluirCarro;
     { Private declarations }
   public
     { Public declarations }
@@ -28,10 +31,21 @@ implementation
 
 {$R *.dfm}
 
+procedure TfrmListarCarro.btnExcluirClick(Sender: TObject);
+begin
+  ValidaExclusaoCarro;
+  ExcluirCarro;
+end;
+
 procedure TfrmListarCarro.dbgCarroDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
   ZebrarGrid(dbgCarro, DM.qryCarro, Rect, Column, State);
+end;
+
+procedure TfrmListarCarro.ExcluirCarro;
+begin
+  DM.qryCarro.Delete;
 end;
 
 procedure TfrmListarCarro.FormActivate(Sender: TObject);
@@ -43,6 +57,18 @@ end;
 procedure TfrmListarCarro.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   PassarParametro(DM.qryCarro, [], False);
+end;
+
+procedure TfrmListarCarro.ValidaExclusaoCarro;
+begin
+  if DM.qryCarro.IsEmpty then
+  begin
+    Alerta('Não existem registros há serem excluídos');
+    Abort;
+  end;
+
+  if (not Pergunta('Deseja realmente exluir esse carro?')) then
+    Abort;
 end;
 
 end.

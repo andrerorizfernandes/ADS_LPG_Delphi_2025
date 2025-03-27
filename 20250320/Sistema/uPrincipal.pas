@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ComCtrls, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ComCtrls, Vcl.ExtCtrls,
+  Vcl.Imaging.jpeg;
 
 type
   TfrmPrincipal = class(TForm)
@@ -50,10 +51,12 @@ begin
 end;
 
 procedure TfrmPrincipal.PreencherBarraDeStatus;
+const
+  NOME_APRESENTACAO = 'ADS 2025 - Delphi';
 begin
   stbStatus.Panels[0].Text := DateToStr(Date);
   stbStatus.Panels[1].Text := TimeToStr(Time);
-  stbStatus.Panels[2].Text := 'ADS 2025 - Delphi';
+  stbStatus.Panels[2].Text := NOME_APRESENTACAO;
 end;
 
 procedure TfrmPrincipal.tmrPrincipalTimer(Sender: TObject);
