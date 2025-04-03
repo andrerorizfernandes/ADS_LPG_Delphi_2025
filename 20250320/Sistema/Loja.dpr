@@ -5,7 +5,8 @@ uses
   uListarCarro in 'uListarCarro.pas' {frmListarCarro},
   uDM in 'uDM.pas' {DM: TDataModule},
   uFuncoes in 'uFuncoes.pas',
-  uPrincipal in 'uPrincipal.pas' {frmPrincipal};
+  uPrincipal in 'uPrincipal.pas' {frmPrincipal},
+  uCarro in 'uCarro.pas' {frmCarro};
 
 {$R *.res}
 

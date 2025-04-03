@@ -19,9 +19,12 @@ type
     procedure dbgCarroDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure btnExcluirClick(Sender: TObject);
+    procedure btnInserirClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
   private
     procedure ValidaExclusaoCarro;
     procedure ExcluirCarro;
+    procedure AbrirTelaCarro(const pEditando: Boolean);
     { Private declarations }
   public
     { Public declarations }
@@ -29,12 +32,36 @@ type
 
 implementation
 
+uses
+  uCarro;
+
 {$R *.dfm}
+
+procedure TfrmListarCarro.AbrirTelaCarro(const pEditando: Boolean);
+begin
+  var lTelaCarro := TfrmCarro.Create(nil);
+  try
+    lTelaCarro.Editando := pEditando;
+    lTelaCarro.ShowModal;
+  finally
+    lTelaCarro.Free;
+  end;
+end;
+
+procedure TfrmListarCarro.btnEditarClick(Sender: TObject);
+begin
+  AbrirTelaCarro(True);
+end;
 
 procedure TfrmListarCarro.btnExcluirClick(Sender: TObject);
 begin
   ValidaExclusaoCarro;
   ExcluirCarro;
+end;
+
+procedure TfrmListarCarro.btnInserirClick(Sender: TObject);
+begin
+  AbrirTelaCarro(False);
 end;
 
 procedure TfrmListarCarro.dbgCarroDrawColumnCell(Sender: TObject;

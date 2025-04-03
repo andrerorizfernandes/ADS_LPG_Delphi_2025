@@ -99,6 +99,7 @@ object frmListarCarro: TfrmListarCarro
       Align = alRight
       Caption = '&Inserir'
       TabOrder = 1
+      OnClick = btnInserirClick
     end
     object btnEditar: TBitBtn
       Left = 555
@@ -108,6 +109,7 @@ object frmListarCarro: TfrmListarCarro
       Align = alRight
       Caption = '&Editar'
       TabOrder = 2
+      OnClick = btnEditarClick
     end
   end
 end
