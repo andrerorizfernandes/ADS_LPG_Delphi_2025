@@ -21,6 +21,15 @@ type
     qryCarroPLACA: TStringField;
     qryCarroCOR: TStringField;
     qryCarroPOTENCIA: TIntegerField;
+    qryFornecedor: TFDQuery;
+    dsrFornecedor: TDataSource;
+    qryFornecedorCODFORNECEDOR: TIntegerField;
+    qryFornecedorNOME: TStringField;
+    qryFornecedorCNPJ: TStringField;
+    qryFornecedorDDD: TStringField;
+    qryFornecedorTELEFONE: TStringField;
+    qryFornecedorEMAIL: TStringField;
+    qryFornecedorENDERECO: TStringField;
   private
     { Private declarations }
   public

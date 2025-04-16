@@ -15,10 +15,13 @@ type
     imgPrincipal: TImage;
     stbStatus: TStatusBar;
     tmrPrincipal: TTimer;
+    Fornecedor1: TMenuItem;
     procedure Carro1Click(Sender: TObject);
     procedure tmrPrincipalTimer(Sender: TObject);
+    procedure Fornecedor1Click(Sender: TObject);
   private
     procedure AbrirTelaListarCarros;
+    procedure AbrirTelaListarFornecedores;
     procedure PreencherBarraDeStatus;
     { Private declarations }
   public
@@ -31,7 +34,7 @@ var
 implementation
 
 uses
-  uListarCarro;
+  uListarCarro, uListarFornecedor;
 
 {$R *.dfm}
 
@@ -45,9 +48,24 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.AbrirTelaListarFornecedores;
+begin
+  var lTelaListarFornecedores := TfrmListarFornecedor.Create(nil);
+  try
+    lTelaListarFornecedores.ShowModal;
+  finally
+    lTelaListarFornecedores.Free;
+  end;
+end;
+
 procedure TfrmPrincipal.Carro1Click(Sender: TObject);
 begin
   AbrirTelaListarCarros;
+end;
+
+procedure TfrmPrincipal.Fornecedor1Click(Sender: TObject);
+begin
+  AbrirTelaListarFornecedores;
 end;
 
 procedure TfrmPrincipal.PreencherBarraDeStatus;

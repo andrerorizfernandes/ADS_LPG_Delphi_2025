@@ -6,7 +6,9 @@ uses
   uDM in 'uDM.pas' {DM: TDataModule},
   uFuncoes in 'uFuncoes.pas',
   uPrincipal in 'uPrincipal.pas' {frmPrincipal},
-  uCarro in 'uCarro.pas' {frmCarro};
+  uCarro in 'uCarro.pas' {frmCarro},
+  uListarFornecedor in 'uListarFornecedor.pas' {frmListarFornecedor},
+  uFornecedor in 'uFornecedor.pas' {frmFornecedor};
 
 {$R *.res}
 
