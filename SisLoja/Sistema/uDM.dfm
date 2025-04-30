@@ -118,4 +118,70 @@ object DM: TDM
     Left = 152
     Top = 120
   end
+  object qryPeca: TFDQuery
+    FilterOptions = [foCaseInsensitive, foNoPartialCompare]
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT '
+      '  p.CODPECA, '
+      '  p.DESCRICAO, '
+      '  p.FABRICANTE, '
+      '  p.IDENTIFICADOR, '
+      '  p.ORIGEM, '
+      '  p.ATIVO'
+      'FROM PECA p'
+      'WHERE p.ATIVO =:ATIVO'
+      'ORDER BY p.DESCRICAO')
+    Left = 240
+    Top = 104
+    ParamData = <
+      item
+        Name = 'ATIVO'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end>
+    object qryPecaCODPECA: TIntegerField
+      FieldName = 'CODPECA'
+      Origin = 'CODPECA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object qryPecaDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Required = True
+      Size = 100
+    end
+    object qryPecaFABRICANTE: TStringField
+      FieldName = 'FABRICANTE'
+      Origin = 'FABRICANTE'
+      Required = True
+      Size = 50
+    end
+    object qryPecaIDENTIFICADOR: TStringField
+      FieldName = 'IDENTIFICADOR'
+      Origin = 'IDENTIFICADOR'
+      Required = True
+      Size = 8
+    end
+    object qryPecaORIGEM: TStringField
+      FieldName = 'ORIGEM'
+      Origin = 'ORIGEM'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object qryPecaATIVO: TStringField
+      FieldName = 'ATIVO'
+      Origin = 'ATIVO'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object dsrPeca: TDataSource
+    DataSet = qryPeca
+    Left = 248
+    Top = 120
+  end
 end

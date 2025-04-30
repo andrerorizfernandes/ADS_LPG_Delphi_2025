@@ -30,6 +30,14 @@ type
     qryFornecedorTELEFONE: TStringField;
     qryFornecedorEMAIL: TStringField;
     qryFornecedorENDERECO: TStringField;
+    qryPeca: TFDQuery;
+    dsrPeca: TDataSource;
+    qryPecaCODPECA: TIntegerField;
+    qryPecaDESCRICAO: TStringField;
+    qryPecaFABRICANTE: TStringField;
+    qryPecaIDENTIFICADOR: TStringField;
+    qryPecaORIGEM: TStringField;
+    qryPecaATIVO: TStringField;
   private
     { Private declarations }
   public

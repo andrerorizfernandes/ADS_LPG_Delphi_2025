@@ -1601,6 +1601,10 @@ object frmPrincipal: TfrmPrincipal
         Caption = '&Fornecedor'
         OnClick = Fornecedor1Click
       end
+      object Pea1: TMenuItem
+        Caption = 'Pe'#231'a'
+        OnClick = Pea1Click
+      end
     end
   end
   object tmrPrincipal: TTimer
