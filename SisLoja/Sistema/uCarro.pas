@@ -21,6 +21,8 @@ type
     lblPlaca: TLabel;
     dbePotencia: TDBEdit;
     lblPotencia: TLabel;
+    lblFornecedor: TLabel;
+    dblFornecedor: TDBLookupComboBox;
     procedure FormActivate(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);

@@ -78,12 +78,14 @@ end;
 procedure TfrmListarCarro.FormActivate(Sender: TObject);
 begin
   PassarParametro(DM.qryCarro, []);
+  PassarParametro(DM.qryFornecedor, []);
   AjustarColunas(dbgCarro);
 end;
 
 procedure TfrmListarCarro.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   PassarParametro(DM.qryCarro, [], False);
+  PassarParametro(DM.qryFornecedor, [], False);
 end;
 
 procedure TfrmListarCarro.ValidaExclusaoCarro;

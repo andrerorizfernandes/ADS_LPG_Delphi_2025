@@ -38,6 +38,9 @@ type
     qryPecaIDENTIFICADOR: TStringField;
     qryPecaORIGEM: TStringField;
     qryPecaATIVO: TStringField;
+    qryCarroFORNECEDOR: TStringField;
+    qryCarroCNPJFORNECEDOR: TStringField;
+    qryCarroCODFORNECEDOR: TIntegerField;
   private
     { Private declarations }
   public

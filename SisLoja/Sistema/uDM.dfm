@@ -24,9 +24,13 @@ object DM: TDM
   object qryCarro: TFDQuery
     Connection = Conexao
     SQL.Strings = (
+      'SELECT '
       
-        'SELECT c.CODCARRO, c.DESCRICAO, c.PLACA, c.COR, c.POTENCIA FROM ' +
-        'CARRO c')
+        '  c.CODCARRO, c.DESCRICAO, c.PLACA, c.COR, c.POTENCIA, c.CODFORN' +
+        'ECEDOR, '
+      '  f.NOME Fornecedor, f.CNPJ CnpjFornecedor'
+      'FROM CARRO c'
+      'INNER JOIN FORNECEDOR f ON f.CODFORNECEDOR = c.CODFORNECEDOR')
     Left = 40
     Top = 104
     object qryCarroCODCARRO: TIntegerField
@@ -55,6 +59,27 @@ object DM: TDM
       FieldName = 'POTENCIA'
       Origin = 'POTENCIA'
       Required = True
+    end
+    object qryCarroCODFORNECEDOR: TIntegerField
+      FieldName = 'CODFORNECEDOR'
+      Origin = 'CODFORNECEDOR'
+      Required = True
+    end
+    object qryCarroFORNECEDOR: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'FORNECEDOR'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 60
+    end
+    object qryCarroCNPJFORNECEDOR: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CNPJFORNECEDOR'
+      Origin = 'CNPJ'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 14
     end
   end
   object dsrCarro: TDataSource

@@ -4,8 +4,8 @@ object frmCarro: TfrmCarro
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Carro'
-  ClientHeight = 90
-  ClientWidth = 729
+  ClientHeight = 141
+  ClientWidth = 730
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,13 +18,11 @@ object frmCarro: TfrmCarro
   object pnlCarro: TPanel
     Left = 0
     Top = 0
-    Width = 729
-    Height = 56
+    Width = 730
+    Height = 107
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = -1
-    ExplicitWidth = 624
-    ExplicitHeight = 209
+    ExplicitTop = -5
     object lblDescicao: TLabel
       Left = 8
       Top = 6
@@ -52,6 +50,13 @@ object frmCarro: TfrmCarro
       Width = 46
       Height = 15
       Caption = 'Pot'#234'ncia'
+    end
+    object lblFornecedor: TLabel
+      Left = 8
+      Top = 55
+      Width = 60
+      Height = 15
+      Caption = 'Fornecedor'
     end
     object dbeDescricao: TDBEdit
       Left = 8
@@ -89,19 +94,30 @@ object frmCarro: TfrmCarro
       DataSource = DM.dsrCarro
       TabOrder = 3
     end
+    object dblFornecedor: TDBLookupComboBox
+      Left = 8
+      Top = 72
+      Width = 713
+      Height = 23
+      DataField = 'CODFORNECEDOR'
+      DataSource = DM.dsrCarro
+      KeyField = 'CODFORNECEDOR'
+      ListField = 'NOME'
+      ListSource = DM.dsrFornecedor
+      TabOrder = 4
+    end
   end
   object pnlBotoes: TPanel
     Left = 0
-    Top = 56
-    Width = 729
+    Top = 107
+    Width = 730
     Height = 34
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = -134
-    ExplicitTop = 407
-    ExplicitWidth = 758
+    ExplicitTop = 56
+    ExplicitWidth = 729
     object btnCancelar: TBitBtn
-      Left = 627
+      Left = 628
       Top = 1
       Width = 101
       Height = 32
@@ -109,10 +125,10 @@ object frmCarro: TfrmCarro
       Caption = '&Cancelar'
       TabOrder = 1
       OnClick = btnCancelarClick
-      ExplicitLeft = 656
+      ExplicitLeft = 627
     end
     object btnGravar: TBitBtn
-      Left = 526
+      Left = 527
       Top = 1
       Width = 101
       Height = 32
@@ -120,7 +136,7 @@ object frmCarro: TfrmCarro
       Caption = '&Gravar'
       TabOrder = 0
       OnClick = btnGravarClick
-      ExplicitLeft = 555
+      ExplicitLeft = 526
     end
   end
 end

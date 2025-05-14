@@ -5,7 +5,7 @@ object frmListarCarro: TfrmListarCarro
   BorderStyle = bsSingle
   Caption = 'Carros'
   ClientHeight = 444
-  ClientWidth = 758
+  ClientWidth = 970
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,7 @@ object frmListarCarro: TfrmListarCarro
   object dbgCarro: TDBGrid
     Left = 0
     Top = 0
-    Width = 758
+    Width = 970
     Height = 410
     Align = alClient
     DataSource = DM.dsrCarro
@@ -43,14 +43,14 @@ object frmListarCarro: TfrmListarCarro
         Expanded = False
         FieldName = 'CODCARRO'
         Title.Caption = 'C'#243'digo'
-        Width = 71
+        Width = 54
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DESCRICAO'
         Title.Caption = 'Descri'#231#227'o'
-        Width = 341
+        Width = 264
         Visible = True
       end
       item
@@ -72,17 +72,32 @@ object frmListarCarro: TfrmListarCarro
         FieldName = 'POTENCIA'
         Title.Caption = 'Pot'#234'ncia'
         Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'FORNECEDOR'
+        Title.Caption = 'Fornecedor'
+        Width = 190
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CNPJFORNECEDOR'
+        Title.Caption = 'Cnpj'
+        Width = 114
+        Visible = True
       end>
   end
   object pnlBotoes: TPanel
     Left = 0
     Top = 410
-    Width = 758
+    Width = 970
     Height = 34
     Align = alBottom
     TabOrder = 1
+    ExplicitWidth = 758
     object btnExcluir: TBitBtn
-      Left = 656
+      Left = 868
       Top = 1
       Width = 101
       Height = 32
@@ -90,9 +105,10 @@ object frmListarCarro: TfrmListarCarro
       Caption = '&Excluir'
       TabOrder = 0
       OnClick = btnExcluirClick
+      ExplicitLeft = 656
     end
     object btnInserir: TBitBtn
-      Left = 454
+      Left = 666
       Top = 1
       Width = 101
       Height = 32
@@ -100,9 +116,10 @@ object frmListarCarro: TfrmListarCarro
       Caption = '&Inserir'
       TabOrder = 1
       OnClick = btnInserirClick
+      ExplicitLeft = 454
     end
     object btnEditar: TBitBtn
-      Left = 555
+      Left = 767
       Top = 1
       Width = 101
       Height = 32
@@ -110,6 +127,7 @@ object frmListarCarro: TfrmListarCarro
       Caption = '&Editar'
       TabOrder = 2
       OnClick = btnEditarClick
+      ExplicitLeft = 555
     end
   end
 end
