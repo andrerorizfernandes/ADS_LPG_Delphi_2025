@@ -147,16 +147,20 @@ object DM: TDM
     FilterOptions = [foCaseInsensitive, foNoPartialCompare]
     Connection = Conexao
     SQL.Strings = (
-      'SELECT '
-      '  p.CODPECA, '
-      '  p.DESCRICAO, '
-      '  p.FABRICANTE, '
-      '  p.IDENTIFICADOR, '
-      '  p.ORIGEM, '
-      '  p.ATIVO'
-      'FROM PECA p'
-      'WHERE p.ATIVO =:ATIVO'
-      'ORDER BY p.DESCRICAO')
+      'select '
+      '  p.CODPECA, p.DESCRICAO, p.IDENTIFICADOR, '
+      '  p.ORIGEM,'
+      '  case p.ORIGEM'
+      '    when '#39'N'#39' then '#39'Nacional'#39
+      '    when '#39'I'#39' then '#39'Internacional'#39
+      '  end OrigemDescricao,'
+      '  p.ATIVO, p.CODFABRICANTE,'
+      '  f.NOME fabricante, c.NOME || '#39'-'#39' || c.UF cidadefabricante'
+      'from peca p'
+      'inner join FABRICANTE f on f.CODFABRICANTE=p.CODFABRICANTE'
+      'inner join cidade c on c.CODCIDADE=f.CODCIDADE'
+      'where p.ATIVO = :ATIVO'
+      'order by DESCRICAO')
     Left = 240
     Top = 104
     ParamData = <
@@ -177,12 +181,6 @@ object DM: TDM
       Required = True
       Size = 100
     end
-    object qryPecaFABRICANTE: TStringField
-      FieldName = 'FABRICANTE'
-      Origin = 'FABRICANTE'
-      Required = True
-      Size = 50
-    end
     object qryPecaIDENTIFICADOR: TStringField
       FieldName = 'IDENTIFICADOR'
       Origin = 'IDENTIFICADOR'
@@ -196,12 +194,42 @@ object DM: TDM
       FixedChar = True
       Size = 1
     end
+    object qryPecaORIGEMDESCRICAO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ORIGEMDESCRICAO'
+      Origin = 'ORIGEMDESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 13
+    end
     object qryPecaATIVO: TStringField
       FieldName = 'ATIVO'
       Origin = 'ATIVO'
       Required = True
       FixedChar = True
       Size = 1
+    end
+    object qryPecaCODFABRICANTE: TIntegerField
+      FieldName = 'CODFABRICANTE'
+      Origin = 'CODFABRICANTE'
+      Required = True
+    end
+    object qryPecaFABRICANTE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'FABRICANTE'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object qryPecaCIDADEFABRICANTE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CIDADEFABRICANTE'
+      Origin = 'CIDADEFABRICANTE'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 83
     end
   end
   object dsrPeca: TDataSource

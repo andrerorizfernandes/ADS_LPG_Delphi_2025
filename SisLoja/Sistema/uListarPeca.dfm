@@ -42,26 +42,37 @@ object frmListarPeca: TfrmListarPeca
       item
         Expanded = False
         FieldName = 'CODPECA'
+        Title.Caption = 'C'#243'd.'
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DESCRICAO'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'FABRICANTE'
+        Title.Caption = 'Descri'#231#227'o'
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'IDENTIFICADOR'
+        Title.Caption = 'Identificador'
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'ORIGEM'
+        FieldName = 'ORIGEMDESCRICAO'
+        Title.Caption = 'Origem'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'FABRICANTE'
+        Title.Caption = 'Fabricante'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CIDADEFABRICANTE'
+        Title.Caption = 'Cidade/UF'
         Visible = True
       end>
   end
@@ -117,9 +128,6 @@ object frmListarPeca: TfrmListarPeca
       Align = alClient
       TabOrder = 0
       OnChange = edtFilttroDescricaoChange
-      ExplicitLeft = 96
-      ExplicitTop = 16
-      ExplicitWidth = 121
       ExplicitHeight = 23
     end
   end

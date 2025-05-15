@@ -32,15 +32,18 @@ type
     qryFornecedorENDERECO: TStringField;
     qryPeca: TFDQuery;
     dsrPeca: TDataSource;
-    qryPecaCODPECA: TIntegerField;
-    qryPecaDESCRICAO: TStringField;
-    qryPecaFABRICANTE: TStringField;
-    qryPecaIDENTIFICADOR: TStringField;
-    qryPecaORIGEM: TStringField;
-    qryPecaATIVO: TStringField;
     qryCarroFORNECEDOR: TStringField;
     qryCarroCNPJFORNECEDOR: TStringField;
     qryCarroCODFORNECEDOR: TIntegerField;
+    qryPecaCODPECA: TIntegerField;
+    qryPecaDESCRICAO: TStringField;
+    qryPecaIDENTIFICADOR: TStringField;
+    qryPecaORIGEM: TStringField;
+    qryPecaATIVO: TStringField;
+    qryPecaCODFABRICANTE: TIntegerField;
+    qryPecaFABRICANTE: TStringField;
+    qryPecaCIDADEFABRICANTE: TStringField;
+    qryPecaORIGEMDESCRICAO: TStringField;
   private
     { Private declarations }
   public
