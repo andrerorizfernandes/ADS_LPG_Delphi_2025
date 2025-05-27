@@ -237,4 +237,52 @@ object DM: TDM
     Left = 248
     Top = 120
   end
+  object qryFabrincate: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'select '
+      '  f.codfabricante, f.nome, f.codcidade, c.nome cidade, c.uf '
+      'from fabricante f'
+      'inner join cidade c on f.codcidade=c.codcidade')
+    Left = 344
+    Top = 112
+    object qryFabrincateCODFABRICANTE: TIntegerField
+      FieldName = 'CODFABRICANTE'
+      Origin = 'CODFABRICANTE'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryFabrincateNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 50
+    end
+    object qryFabrincateCODCIDADE: TIntegerField
+      FieldName = 'CODCIDADE'
+      Origin = 'CODCIDADE'
+      Required = True
+    end
+    object qryFabrincateCIDADE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CIDADE'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 80
+    end
+    object qryFabrincateUF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'UF'
+      Origin = 'UF'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 2
+    end
+  end
+  object dsrFabricante: TDataSource
+    DataSet = qryFabrincate
+    Left = 352
+    Top = 128
+  end
 end

@@ -22,10 +22,13 @@ type
     procedure dbgPecaDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure edtFilttroDescricaoChange(Sender: TObject);
+    procedure btnInserirClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
   private
     procedure ValidaExclusaoPeca;
     procedure ExcluirPeca;
     procedure FiltrarPecaoPorDescricao;
+    procedure AbrirTelaPeca(const pEditando: Boolean);
     { Private declarations }
   public
     { Public declarations }
@@ -35,13 +38,34 @@ implementation
 
 {$R *.dfm}
 
-uses uFornecedor;
+uses uFornecedor, uPeca;
+
+procedure TfrmListarPeca.AbrirTelaPeca(const pEditando: Boolean);
+begin
+  var lTelaPeca := TfrmPeca.Create(nil);
+  try
+    lTelaPeca.Editando := pEditando;
+    lTelaPeca.ShowModal;
+  finally
+    lTelaPeca.Free;
+  end;
+end;
+
+procedure TfrmListarPeca.btnEditarClick(Sender: TObject);
+begin
+  AbrirTelaPeca(True);
+end;
 
 procedure TfrmListarPeca.btnExcluirClick(Sender: TObject);
 begin
   ValidaExclusaoPeca;
   ExcluirPeca;
   PassarParametro(DM.qryPeca, ['S'])
+end;
+
+procedure TfrmListarPeca.btnInserirClick(Sender: TObject);
+begin
+  AbrirTelaPeca(False);
 end;
 
 procedure TfrmListarPeca.dbgPecaDrawColumnCell(Sender: TObject;
@@ -71,6 +95,7 @@ end;
 procedure TfrmListarPeca.FormActivate(Sender: TObject);
 begin
   PassarParametro(DM.qryPeca, ['S']);
+  PassarParametro(DM.qryFabrincate, []);
   AjustarColunas(dbgPeca);
 end;
 
@@ -78,6 +103,7 @@ procedure TfrmListarPeca.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   PassarParametro(DM.qryPeca, [], False);
+  PassarParametro(DM.qryFabrincate, [], False);
 end;
 
 procedure TfrmListarPeca.ValidaExclusaoPeca;

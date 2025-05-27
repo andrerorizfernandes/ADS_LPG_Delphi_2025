@@ -154,6 +154,10 @@
             <Form>frmListarPeca</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uPeca.pas">
+            <Form>frmPeca</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

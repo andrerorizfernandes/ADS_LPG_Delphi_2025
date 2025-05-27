@@ -44,6 +44,13 @@ type
     qryPecaFABRICANTE: TStringField;
     qryPecaCIDADEFABRICANTE: TStringField;
     qryPecaORIGEMDESCRICAO: TStringField;
+    qryFabrincate: TFDQuery;
+    dsrFabricante: TDataSource;
+    qryFabrincateCODFABRICANTE: TIntegerField;
+    qryFabrincateNOME: TStringField;
+    qryFabrincateCODCIDADE: TIntegerField;
+    qryFabrincateCIDADE: TStringField;
+    qryFabrincateUF: TStringField;
   private
     { Private declarations }
   public

@@ -9,7 +9,8 @@ uses
   uCarro in 'uCarro.pas' {frmCarro},
   uListarFornecedor in 'uListarFornecedor.pas' {frmListarFornecedor},
   uFornecedor in 'uFornecedor.pas' {frmFornecedor},
-  uListarPeca in 'uListarPeca.pas' {frmListarPeca};
+  uListarPeca in 'uListarPeca.pas' {frmListarPeca},
+  uPeca in 'uPeca.pas' {frmPeca};
 
 {$R *.res}
 
