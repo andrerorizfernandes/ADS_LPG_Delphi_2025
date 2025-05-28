@@ -1,4 +1,4 @@
-unit uFuncoes; 
+unit uFuncoes;
 
 interface
 
@@ -13,8 +13,12 @@ procedure Alerta(const pMensagem: string);
 procedure Informacao(const pMensagem: string);
 procedure Erro(const pMensagem: string);
 function Pergunta(const pPergunta: string): Boolean;
+function Pesquisa(const pSQL, pNomeCampoRetorno, pTituloTelaPesquisa: string): Variant;
 
 implementation
+
+uses
+  uPesquisa;
 
 const
   NOME_SISTEMA = 'Loja';
@@ -146,5 +150,19 @@ begin
 
   if (Application.MessageBox(PChar(pPergunta), PWideChar(NOME_SISTEMA), MB_ICONQUESTION + MB_YESNO + MB_DEFBUTTON2) = IDYES) then
     Result:= True;
+end;
+
+function Pesquisa(const pSQL, pNomeCampoRetorno, pTituloTelaPesquisa: string): Variant;
+begin
+  var lTelaPesquisa := TfrmPesquisa.Create(nil);
+  try
+    lTelaPesquisa.Caption := pTituloTelaPesquisa;
+    lTelaPesquisa.Sql := pSQL;
+    lTelaPesquisa.NomeCampoRetorno := pNomeCampoRetorno;
+    Result := -1;
+    lTelaPesquisa.ShowModal;
+  finally
+    lTelaPesquisa.Free;
+  end;
 end;
 end.

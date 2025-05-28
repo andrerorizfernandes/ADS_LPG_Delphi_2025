@@ -22,7 +22,6 @@ object frmPeca: TfrmPeca
     Height = 107
     Align = alClient
     TabOrder = 0
-    ExplicitTop = -5
     object lblDescicao: TLabel
       Left = 8
       Top = 6
@@ -118,6 +117,15 @@ object frmPeca: TfrmPeca
       Caption = '&Gravar'
       TabOrder = 0
       OnClick = btnGravarClick
+    end
+    object Button1: TButton
+      Left = 152
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'Button1'
+      TabOrder = 2
+      OnClick = Button1Click
     end
   end
 end

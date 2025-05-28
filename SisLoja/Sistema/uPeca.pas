@@ -20,9 +20,11 @@ type
     lblFabricante: TLabel;
     dblFabricante: TDBLookupComboBox;
     dbrOrigem: TDBRadioGroup;
+    Button1: TButton;
     procedure FormActivate(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     FEditando: Boolean;
     procedure PrepararAmbiente;
@@ -50,6 +52,11 @@ procedure TfrmPeca.btnGravarClick(Sender: TObject);
 begin
   Gravar;
   Close;
+end;
+
+procedure TfrmPeca.Button1Click(Sender: TObject);
+begin
+  Pesquisa('select * from peca', 'codpeca', 'Pesquisa de peça');
 end;
 
 procedure TfrmPeca.Cancelar;
