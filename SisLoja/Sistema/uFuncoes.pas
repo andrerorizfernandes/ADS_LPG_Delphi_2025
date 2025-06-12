@@ -13,7 +13,7 @@ procedure Alerta(const pMensagem: string);
 procedure Informacao(const pMensagem: string);
 procedure Erro(const pMensagem: string);
 function Pergunta(const pPergunta: string): Boolean;
-function Pesquisa(const pSQL, pNomeCampoRetorno, pTituloTelaPesquisa: string): Variant;
+function Pesquisa(const pSelectSql, pNomeCampoRetorno, pTituloTelaPesquisa: string): Variant;
 
 implementation
 
@@ -152,12 +152,12 @@ begin
     Result:= True;
 end;
 
-function Pesquisa(const pSQL, pNomeCampoRetorno, pTituloTelaPesquisa: string): Variant;
+function Pesquisa(const pSelectSql, pNomeCampoRetorno, pTituloTelaPesquisa: string): Variant;
 begin
   var lTelaPesquisa := TfrmPesquisa.Create(nil);
   try
     lTelaPesquisa.Caption := pTituloTelaPesquisa;
-    lTelaPesquisa.Sql := pSQL;
+    lTelaPesquisa.SelectSql := pSelectSql;
     lTelaPesquisa.NomeCampoRetorno := pNomeCampoRetorno;
     Result := -1;
     lTelaPesquisa.ShowModal;
