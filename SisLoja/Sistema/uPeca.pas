@@ -18,13 +18,14 @@ type
     dbeIdentificador: TDBEdit;
     lblIdentificador: TLabel;
     lblFabricante: TLabel;
-    dblFabricante: TDBLookupComboBox;
     dbrOrigem: TDBRadioGroup;
-    Button1: TButton;
+    edtCodFabricante: TEdit;
+    edtNomeFabricante: TEdit;
+    btnPesquisaFabricante: TBitBtn;
     procedure FormActivate(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure btnPesquisaFabricanteClick(Sender: TObject);
   private
     FEditando: Boolean;
     procedure PrepararAmbiente;
@@ -54,14 +55,22 @@ begin
   Close;
 end;
 
-procedure TfrmPeca.Button1Click(Sender: TObject);
+procedure TfrmPeca.btnPesquisaFabricanteClick(Sender: TObject);
 begin
-  Pesquisa('select * from peca', 'codpeca', 'Pesquisa de peça');
+  edtCodFabricante.Text :=
+    Pesquisa(
+      'select codfabricante, nome from fabricante',
+      'codfabricante',
+      'Pesquisa de fabricante');
+    if DM.qryFabrincate.Locate('codfabricante', edtCodFabricante.Text, []) then
+      edtNomeFabricante.Text := DM.qryFabrincateNOME.AsString;
 end;
 
 procedure TfrmPeca.Cancelar;
 begin
   DM.qryPeca.Cancel;
+  edtCodFabricante.Clear;
+  edtNomeFabricante.Clear;
 end;
 
 procedure TfrmPeca.FormActivate(Sender: TObject);
@@ -72,8 +81,11 @@ end;
 procedure TfrmPeca.Gravar;
 begin
   DM.qryPecaATIVO.AsString := 'S';
+  DM.qryPecaCODFABRICANTE.AsString := edtCodFabricante.Text;
   DM.qryPeca.Post;
   DM.qryPeca.Refresh;
+  edtCodFabricante.Clear;
+  edtNomeFabricante.Clear;
 end;
 
 procedure TfrmPeca.PrepararAmbiente;
@@ -81,6 +93,9 @@ begin
   if FEditando then
     begin
       Caption := 'Peça [Editando]';
+      edtCodFabricante.Text := DM.qryPecaCODFABRICANTE.AsString;
+      if DM.qryFabrincate.Locate('codfabricante', DM.qryPecaCODFABRICANTE.AsString, []) then
+        edtNomeFabricante.Text := DM.qryFabrincateNOME.AsString;
       DM.qryPeca.Edit;
     end
   else

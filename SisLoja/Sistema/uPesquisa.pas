@@ -19,17 +19,24 @@ type
     cboCampoFiltro: TComboBox;
     cboTipoFiltro: TComboBox;
     edtValorFiltro: TEdit;
+    pnlBotoes: TPanel;
+    btnSelecionar: TBitBtn;
     procedure btnPesquisarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure dbgPesquisaDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure FormActivate(Sender: TObject);
+    procedure btnSelecionarClick(Sender: TObject);
+    procedure dbgPesquisaDblClick(Sender: TObject);
+    procedure dbgPesquisaKeyPress(Sender: TObject; var Key: Char);
   private
     FqryPesquisa: TFDQuery;
     FdsrPesquisa: TDataSource;
     FSelectSql,
     FNomeCampoRetorno: string;
+    FValorSelecionado: Variant;
+    FExibirTodos: Boolean;
 
     function Pesquisar: Variant;
     procedure CriarObjetos;
@@ -39,10 +46,12 @@ type
     procedure AbrirQueryPesquisa;
     procedure AtualizarQuantidadeRegistros;
     procedure ValidarDados;
+    procedure RetornarValorSelecionadoPeloUsuario;
     { Private declarations }
   public
     property SelectSql: string write FSelectSQL;
     property NomeCampoRetorno: string write FNomeCampoRetorno;
+    property ValorSelecionado: Variant read FValorSelecionado;
     { Public declarations }
   end;
 
@@ -82,6 +91,11 @@ begin
   AjustarColunas(dbgPesquisa);
 end;
 
+procedure TfrmPesquisa.btnSelecionarClick(Sender: TObject);
+begin
+  RetornarValorSelecionadoPeloUsuario;
+end;
+
 procedure TfrmPesquisa.CriarObjetos;
 begin
   FqryPesquisa := TFDQuery.Create(nil);
@@ -93,10 +107,21 @@ begin
   dbgPesquisa.DataSource := FdsrPesquisa;
 end;
 
+procedure TfrmPesquisa.dbgPesquisaDblClick(Sender: TObject);
+begin
+  RetornarValorSelecionadoPeloUsuario;
+end;
+
 procedure TfrmPesquisa.dbgPesquisaDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
   ZebrarGrid(dbgPesquisa, FqryPesquisa, Rect, Column, State);
+end;
+
+procedure TfrmPesquisa.dbgPesquisaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+    RetornarValorSelecionadoPeloUsuario;
 end;
 
 procedure TfrmPesquisa.DestruirObjetos;
@@ -128,19 +153,21 @@ const
 begin
   ValidarDados;
 
-  //temos que resolver para que o firebird desconsidere collate
   var lFiltroSql := EmptyStr;
   case cboTipoFiltro.ItemIndex of
-    0: lFiltroSql := cboCampoFiltro.Text + ' = ' + QuotedStr(edtValorFiltro.Text);
-    1: lFiltroSql := cboCampoFiltro.Text + ' <> ' + QuotedStr(edtValorFiltro.Text);
-    2: lFiltroSql := cboCampoFiltro.Text + ' like ' + QuotedStr(edtValorFiltro.Text + '%');
-    3: lFiltroSql := cboCampoFiltro.Text + ' like ' + QuotedStr('%' + edtValorFiltro.Text);
-    4: lFiltroSql := cboCampoFiltro.Text + ' like ' + QuotedStr('%' + edtValorFiltro.Text + '%');
+    0: lFiltroSql := 'Upper(' + cboCampoFiltro.Text + ') = ' + QuotedStr(UpperCase(edtValorFiltro.Text));
+    1: lFiltroSql := 'Upper(' + cboCampoFiltro.Text + ') <> ' + QuotedStr(UpperCase(edtValorFiltro.Text));
+    2: lFiltroSql := 'Upper(' + cboCampoFiltro.Text + ') Like ' + QuotedStr(UpperCase(edtValorFiltro.Text + '%'));
+    3: lFiltroSql := 'Upper(' + cboCampoFiltro.Text + ') Like ' + QuotedStr('%' + UpperCase(edtValorFiltro.Text));
+    4: lFiltroSql := 'Upper(' + cboCampoFiltro.Text + ') Like ' + QuotedStr('%' + UpperCase(edtValorFiltro.Text + '%'));
   end;
 
   try
     FqryPesquisa.Close;
-    FqryPesquisa.SQL.Text := Format(INSTRUCAO_SQL, [FSelectSQL, lFiltroSql]);
+    FqryPesquisa.SQL.Text := FSelectSQL;
+    if (not FExibirTodos) then
+      FqryPesquisa.SQL.Text := Format(INSTRUCAO_SQL, [FSelectSQL, lFiltroSql]);
+
     FqryPesquisa.Open;
   except
     on E: Exception do
@@ -168,8 +195,25 @@ begin
   cboTipoFiltro.Items.Add('Que contenha');
 end;
 
+procedure TfrmPesquisa.RetornarValorSelecionadoPeloUsuario;
+begin
+  if FqryPesquisa.FieldByName(FNomeCampoRetorno).AsString.Trim.IsEmpty then
+    Exit;
+
+  FValorSelecionado := FqryPesquisa.FieldByName(FNomeCampoRetorno).AsVariant;
+  Close;
+end;
+
 procedure TfrmPesquisa.ValidarDados;
 begin
+  FExibirTodos :=
+    (cboTipoFiltro.ItemIndex = -1) and
+    (cboCampoFiltro.ItemIndex = -1) and
+    (Trim(edtValorFiltro.Text) = EmptyStr);
+
+  if FExibirTodos then
+    Exit;
+
   if cboTipoFiltro.ItemIndex = -1 then
   begin
     Alerta('Selecione o tipo de filtro');
@@ -191,5 +235,4 @@ begin
     Abort;
   end;
 end;
-
 end.

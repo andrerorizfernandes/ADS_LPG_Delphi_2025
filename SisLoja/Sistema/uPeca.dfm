@@ -61,18 +61,6 @@ object frmPeca: TfrmPeca
       DataSource = DM.dsrPeca
       TabOrder = 1
     end
-    object dblFabricante: TDBLookupComboBox
-      Left = 8
-      Top = 72
-      Width = 713
-      Height = 23
-      DataField = 'CODFABRICANTE'
-      DataSource = DM.dsrPeca
-      KeyField = 'CODFABRICANTE'
-      ListField = 'NOME'
-      ListSource = DM.dsrFabricante
-      TabOrder = 3
-    end
     object dbrOrigem: TDBRadioGroup
       Left = 511
       Top = 2
@@ -90,6 +78,33 @@ object frmPeca: TfrmPeca
         'N'
         'I')
     end
+    object edtCodFabricante: TEdit
+      Left = 8
+      Top = 72
+      Width = 55
+      Height = 23
+      TabStop = False
+      Enabled = False
+      TabOrder = 3
+    end
+    object edtNomeFabricante: TEdit
+      Left = 94
+      Top = 72
+      Width = 627
+      Height = 23
+      TabStop = False
+      Enabled = False
+      TabOrder = 5
+    end
+    object btnPesquisaFabricante: TBitBtn
+      Left = 66
+      Top = 71
+      Width = 25
+      Height = 25
+      Caption = '...'
+      TabOrder = 4
+      OnClick = btnPesquisaFabricanteClick
+    end
   end
   object pnlBotoes: TPanel
     Left = 0
@@ -98,6 +113,7 @@ object frmPeca: TfrmPeca
     Height = 34
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 102
     object btnCancelar: TBitBtn
       Left = 628
       Top = 1
@@ -117,15 +133,6 @@ object frmPeca: TfrmPeca
       Caption = '&Gravar'
       TabOrder = 0
       OnClick = btnGravarClick
-    end
-    object Button1: TButton
-      Left = 152
-      Top = 6
-      Width = 75
-      Height = 25
-      Caption = 'Button1'
-      TabOrder = 2
-      OnClick = Button1Click
     end
   end
 end

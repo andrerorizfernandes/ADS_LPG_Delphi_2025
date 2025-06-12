@@ -38,7 +38,7 @@ object frmPesquisa: TfrmPesquisa
     Left = 0
     Top = 40
     Width = 916
-    Height = 395
+    Height = 365
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -54,6 +54,8 @@ object frmPesquisa: TfrmPesquisa
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = [fsBold]
     OnDrawColumnCell = dbgPesquisaDrawColumnCell
+    OnDblClick = dbgPesquisaDblClick
+    OnKeyPress = dbgPesquisaKeyPress
   end
   object pnlPesquisa: TPanel
     Left = 0
@@ -126,6 +128,24 @@ object frmPesquisa: TfrmPesquisa
       Caption = '&Pesquisar'
       TabOrder = 3
       OnClick = btnPesquisarClick
+    end
+  end
+  object pnlBotoes: TPanel
+    Left = 0
+    Top = 405
+    Width = 916
+    Height = 30
+    Align = alBottom
+    TabOrder = 2
+    object btnSelecionar: TBitBtn
+      Left = 808
+      Top = 1
+      Width = 107
+      Height = 28
+      Align = alRight
+      Caption = '&Selecionar'
+      TabOrder = 0
+      OnClick = btnSelecionarClick
     end
   end
 end

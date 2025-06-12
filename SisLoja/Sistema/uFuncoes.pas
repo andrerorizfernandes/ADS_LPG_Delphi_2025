@@ -159,8 +159,8 @@ begin
     lTelaPesquisa.Caption := pTituloTelaPesquisa;
     lTelaPesquisa.SelectSql := pSelectSql;
     lTelaPesquisa.NomeCampoRetorno := pNomeCampoRetorno;
-    Result := -1;
     lTelaPesquisa.ShowModal;
+    Result := lTelaPesquisa.ValorSelecionado;
   finally
     lTelaPesquisa.Free;
   end;
