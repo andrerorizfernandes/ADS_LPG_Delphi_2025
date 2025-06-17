@@ -24,6 +24,7 @@ type
     procedure edtFilttroDescricaoChange(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
+    procedure dbgPecaDblClick(Sender: TObject);
   private
     procedure ValidaExclusaoPeca;
     procedure ExcluirPeca;
@@ -66,6 +67,11 @@ end;
 procedure TfrmListarPeca.btnInserirClick(Sender: TObject);
 begin
   AbrirTelaPeca(False);
+end;
+
+procedure TfrmListarPeca.dbgPecaDblClick(Sender: TObject);
+begin
+  AbrirTelaPeca(True);
 end;
 
 procedure TfrmListarPeca.dbgPecaDrawColumnCell(Sender: TObject;

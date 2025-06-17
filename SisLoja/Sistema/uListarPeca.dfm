@@ -38,6 +38,7 @@ object frmListarPeca: TfrmListarPeca
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = [fsBold]
     OnDrawColumnCell = dbgPecaDrawColumnCell
+    OnDblClick = dbgPecaDblClick
     Columns = <
       item
         Expanded = False
@@ -55,24 +56,28 @@ object frmListarPeca: TfrmListarPeca
         Expanded = False
         FieldName = 'IDENTIFICADOR'
         Title.Caption = 'Identificador'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'ORIGEMDESCRICAO'
         Title.Caption = 'Origem'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'FABRICANTE'
         Title.Caption = 'Fabricante'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'CIDADEFABRICANTE'
         Title.Caption = 'Cidade/UF'
+        Width = 64
         Visible = True
       end>
   end

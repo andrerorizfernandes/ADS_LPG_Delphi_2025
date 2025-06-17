@@ -26,11 +26,14 @@ type
     procedure btnGravarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnPesquisaFabricanteClick(Sender: TObject);
+    procedure edtCodFabricanteKeyPress(Sender: TObject; var Key: Char);
   private
     FEditando: Boolean;
     procedure PrepararAmbiente;
     procedure Gravar;
     procedure Cancelar;
+    procedure ValidarDados;
+    function NomeFabricante(const pCodigoFabricante: Integer): string;
     { Private declarations }
   public
     property Editando: Boolean write FEditando;
@@ -51,6 +54,7 @@ end;
 
 procedure TfrmPeca.btnGravarClick(Sender: TObject);
 begin
+  ValidarDados;
   Gravar;
   Close;
 end;
@@ -62,8 +66,8 @@ begin
       'select codfabricante, nome from fabricante',
       'codfabricante',
       'Pesquisa de fabricante');
-    if DM.qryFabrincate.Locate('codfabricante', edtCodFabricante.Text, []) then
-      edtNomeFabricante.Text := DM.qryFabrincateNOME.AsString;
+
+  edtNomeFabricante.Text := NomeFabricante(StrToIntDef(edtCodFabricante.Text, -1));
 end;
 
 procedure TfrmPeca.Cancelar;
@@ -71,6 +75,12 @@ begin
   DM.qryPeca.Cancel;
   edtCodFabricante.Clear;
   edtNomeFabricante.Clear;
+end;
+
+procedure TfrmPeca.edtCodFabricanteKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+    edtNomeFabricante.Text := NomeFabricante(StrToIntDef(edtCodFabricante.Text, -1));
 end;
 
 procedure TfrmPeca.FormActivate(Sender: TObject);
@@ -86,6 +96,14 @@ begin
   DM.qryPeca.Refresh;
   edtCodFabricante.Clear;
   edtNomeFabricante.Clear;
+end;
+
+function TfrmPeca.NomeFabricante(const pCodigoFabricante: Integer): string;
+begin
+  Result := EmptyStr;
+
+  if DM.qryFabrincate.Locate('codfabricante', pCodigoFabricante, []) then
+    Result := DM.qryFabrincateNOME.AsString;
 end;
 
 procedure TfrmPeca.PrepararAmbiente;
@@ -104,4 +122,37 @@ begin
       DM.qryPeca.Append;
     end;
 end;
+
+procedure TfrmPeca.ValidarDados;
+begin
+  if (dbeDescricao.Text = EmptyStr) then
+  begin
+    Alerta('Informe a descrição');
+    dbeDescricao.SetFocus;
+    Abort;
+  end;
+
+  if (dbeIdentificador.Text = EmptyStr) then
+  begin
+    Alerta('Informe o identificador');
+    dbeIdentificador.SetFocus;
+    Abort;
+  end;
+
+  if (dbrOrigem.ItemIndex = -1) then
+  begin
+    Alerta('Selecione a origem');
+    Abort;
+  end;
+
+  edtNomeFabricante.Text := NomeFabricante(StrToIntDef(edtCodFabricante.Text, -1));
+
+  if (edtNomeFabricante.Text = EmptyStr) then
+  begin
+    Alerta('Informe o fabricante');
+    edtCodFabricante.SetFocus;
+    Abort;
+  end;
+end;
+
 end.

@@ -83,9 +83,10 @@ object frmPeca: TfrmPeca
       Top = 72
       Width = 55
       Height = 23
-      TabStop = False
-      Enabled = False
+      MaxLength = 9
+      NumbersOnly = True
       TabOrder = 3
+      OnKeyPress = edtCodFabricanteKeyPress
     end
     object edtNomeFabricante: TEdit
       Left = 94
@@ -113,7 +114,6 @@ object frmPeca: TfrmPeca
     Height = 34
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 102
     object btnCancelar: TBitBtn
       Left = 628
       Top = 1
